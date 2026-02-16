@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026年度QB_2401抽象程度测试 - 精简解答</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin: 5px 0;
+        }
+
+        .nav {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            background: #f5f5f5;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn.active {
+            background: #764ba2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .question-box {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .question-box:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .question-num {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            margin: 10px 0 15px 0;
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .options {
+            margin-left: 20px;
+        }
+
+        .option {
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .option.correct {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-left: 4px solid #2e7d32;
+            padding-left: 12px;
+        }
+
+        .option.wrong {
+            background: #ffebee;
+            color: #c62828;
+            border-left: 4px solid #c62828;
+            padding-left: 12px;
+        }
+
+        .option.normal {
+            background: #f5f5f5;
+            color: #666;
+        }
+
+        .answer-info {
+            margin-top: 15px;
+            padding: 12px;
+            background: #e3f2fd;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+            font-size: 0.95em;
+            color: #1565c0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card h3 {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .ranking-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .ranking-table th {
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .ranking-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .ranking-table tbody tr:hover {
+            background: #f5f5f5;
+        }
+
+        .ranking-table tbody tr:nth-child(odd) {
+            background: white;
+        }
+
+        .ranking-table tbody tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .medal {
+            font-size: 1.2em;
+        }
+
+        .fill-blank-box {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .fill-blank-box .blank-text {
+            margin: 10px 0;
+            font-size: 0.95em;
+            color: #333;
+        }
+
+        .fill-blank-box .answer {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            color: #2e7d32;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .short-answer-box {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .short-answer-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .short-answer-box .answer {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            color: #2e7d32;
+            border-radius: 3px;
+            line-height: 1.6;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-to-top:hover {
+            background: #764ba2;
+            transform: translateY(-3px);
+        }
+
+        .scroll-to-top.show {
+            display: flex;
+        }
+
+        .footer {
+            background: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+
+        .progress-info {
+            padding: 15px;
+            background: #fff3e0;
+            border-left: 4px solid #f57c00;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            color: #e65100;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ranking-table th, .ranking-table td {
+                padding: 10px 5px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>2026年度QB_2401</h1>
+            <h1>抽象程度测试（精简解答）</h1>
+            <p>出卷人：杨逸涵 | 审卷人：各个当事人们</p>
+            <p>这是一份关于班级记忆的测试卷</p>
+        </div>
+
+        <div class="nav">
+            <button class="nav-btn active" onclick="switchSection('overview')">概览</button>
+            <button class="nav-btn" onclick="switchSection('multiple')">选择题</button>
+            <button class="nav-btn" onclick="switchSection('fillblank')">填空题</button>
+            <button class="nav-btn" onclick="switchSection('shortans')">简答题</button>
+        </div>
+
+        <div class="content">
+            <!-- 概览 -->
+            <div id="overview" class="section active">
+                <h2 class="section-title">📊 测试概览</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>选择题</h3>
+                        <div class="number">37题</div>
+                        <p style="margin-top: 10px; font-size: 0.9em;">每题2分，共74分</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>填空题</h3>
+                        <div class="number">3题</div>
+                        <p style="margin-top: 10px; font-size: 0.9em;">16个空，每空1分</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>简答题</h3>
+                        <div class="number">2题</div>
+                        <p style="margin-top: 10px; font-size: 0.9em;">每题5分，共10分</p>
+                    </div>
+                </div>
+
+                <h3 class="section-title" style="margin-top: 30px;">❓ 温馨提示</h3>
+                <div class="progress-info">
+                    <strong>关于本次测试：</strong>
+                    <p style="margin-top: 8px;">本文档为上一版考试试卷的精简解答，每题带选项选择比例与正确答案。</p>
+                    <p style="margin-top: 8px;">🟢 绿色为正确选项 | 🔴 红色为易错项</p>
+                </div>
+
+                <h3 class="section-title" style="margin-top: 30px;">🏆 排名前10</h3>
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>昵称</th>
+                            <th>总分</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="medal">🥇</span> 1</td>
+                            <td>wmy</td>
+                            <td><strong>91分</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="medal">🥈</span> 2</td>
+                            <td>总统</td>
+                            <td><strong>84分</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="medal">🥉</span> 3</td>
+                            <td>叶楠(zc)</td>
+                            <td><strong>79分</strong></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>妖</td>
+                            <td>77分</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>xbw</td>
+                            <td>75分</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>小毛线球</td>
+                            <td>73分</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Yly</td>
+                            <td>66分</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>zhangxq</td>
+                            <td>64分</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>yn(jjs)</td>
+                            <td>61分</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>叶楠头号第一粉丝(cjf)</td>
+                            <td>58分</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 选择题 -->
+            <div id="multiple" class="section">
+                <h2 class="section-title">一、选择题（每题2分，共74分）</h2>
+
+                <div class="question-box">
+                    <div class="question-num">【第1题】</div>
+                    <div class="question-text">2401班的班主任（以下简称班主任）最喜欢的书籍是</div>
+                    <div class="options">
+                        <div class="option normal">(11%) A. 《高分钥匙——高考数学一本通》</div>
+                        <div class="option correct">(72%) B. 《数学教育随想录》✓</div>
+                        <div class="option normal">(11%) C. 《普通高中教科书——数学 沪科技版》全7册</div>
+                        <div class="option normal">(0%) D. 《高等数学》</div>
+                        <div class="option normal">(6%) E. 以上都是</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第2题】</div>
+                    <div class="question-text">高三时期，大宝在晚自习时在讲台上公屏游玩Plants v.s. Zombies被发现，第二天早上，班主任发表了有关于学习应坚持不懈的论调，他使用了以下哪一个典故作为类比？</div>
+                    <div class="options">
+                        <div class="option normal">(0%) A. 王安石变法</div>
+                        <div class="option wrong">(44%) B. 《荀子·劝学》✗</div>
+                        <div class="option correct">(56%) C. 国共内战✓</div>
+                        <div class="option normal">(0%) D. 特洛伊木马</div>
+                        <div class="option normal">(0%) E. 以上都不是</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第3题】</div>
+                    <div class="question-text">名句默写：第一最好不相见，如此便可 ______；第二最好不相知，如此便可 ______。——出自《七宝の颠》2022.10.19</div>
+                    <div class="options">
+                        <div class="option correct">(78%) A. 不相恋；不相念✓</div>
+                        <div class="option normal">(22%) B. 不相念；不相恋</div>
+                        <div class="option normal">(0%) C. 不相骗；不相欠</div>
+                        <div class="option normal">(0%) D. 不相欠；不相骗</div>
+                        <div class="option normal">(0%) E. 以上都不是</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第4题】</div>
+                    <div class="question-text">高三时期，JYC同学的手机曾被没收了230天，时间跨度如此之长是因为没有达到归还条件——考进年级前30名。一切的一切源于晚自习中唱的那首《______》。</div>
+                    <div class="options">
+                        <div class="option normal">(0%) A. 因为爱情</div>
+                        <div class="option normal">(0%) B. 飞云之下</div>
+                        <div class="option normal">(0%) C. 今天你要嫁给我</div>
+                        <div class="option correct">(100%) D. 手心的蔷薇✓</div>
+                        <div class="option normal">(0%) E. 以上都不是</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第5题】</div>
+                    <div class="question-text">在班主任的眼中，考取高分是热爱学习的什么条件？</div>
+                    <div class="options">
+                        <div class="option correct">(44%) A. 充分条件✓</div>
+                        <div class="option wrong">(44%) B. 必要条件✗</div>
+                        <div class="option normal">(6%) C. 充要条件</div>
+                        <div class="option normal">(6%) D. 既不充分也不必要条件</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第6题】</div>
+                    <div class="question-text">三年期间，最长的一次集体居家学习始于哪一天？</div>
+                    <div class="options">
+                        <div class="option normal">(11%) A. 2022年2月28日</div>
+                        <div class="option correct">(50%) B. 2022年3月12日✓</div>
+                        <div class="option normal">(11%) C. 2022年3月19日</div>
+                        <div class="option wrong">(17%) D. 2022年10月10日✗</div>
+                        <div class="option normal">(11%) E. 2022年12月14日</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第7题】</div>
+                    <div class="question-text">2021年12月13日，GX同学由于在默写时作弊，《及时雨》被马霄燕老师撕毁，老师在撕毁后说的第一句话是什么？</div>
+                    <div class="options">
+                        <div class="option wrong">(27%) A. 手不要动啊！✗</div>
+                        <div class="option normal">(0%) B. 在下面干什么？</div>
+                        <div class="option correct">(61%) C. 再重新买一本去。✓</div>
+                        <div class="option normal">(6%) D. 全部所有内容F*20!</div>
+                        <div class="option normal">(6%) E. 以上都不是</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第8题】</div>
+                    <div class="question-text">最长的一次无政府状态（班主任去出高考卷）持续时间是多久？</div>
+                    <div class="options">
+                        <div class="option correct">(56%) A. 39天✓</div>
+                        <div class="option wrong">(21%) B. 49天✗</div>
+                        <div class="option normal">(17%) C. 59天</div>
+                        <div class="option normal">(6%) D. 69天</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第9题】</div>
+                    <div class="question-text">七宝中学图文信息大楼启用仪式发生在哪一年？</div>
+                    <div class="options">
+                        <div class="option normal">(6%) A. 2021年</div>
+                        <div class="option correct">(78%) B. 2022年✓</div>
+                        <div class="option normal">(16%) C. 2023年</div>
+                        <div class="option normal">(0%) D. 2024年</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第10题】</div>
+                    <div class="question-text">这道题正确率不过半是一件很恐怖的事情，因为一道二选一的题，你就算______，也能有50%的正确率。——贺怀栋老师</div>
+                    <div class="options">
+                        <div class="option normal">(0%) A. 抛硬币</div>
+                        <div class="option normal">(0%) B. 随便乱写一个答案</div>
+                        <div class="option correct">(100%) C. 让一群猪来做✓</div>
+                        <div class="option normal">(0%) D. 让一年级的小学生来做</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第11题】</div>
+                    <div class="question-text">图中这个野生波波可以在哪一侧楼梯的画板上观测到？</div>
+                    <div class="options">
+                        <div class="option correct">(82%) A. 西北角✓</div>
+                        <div class="option normal">(6%) B. 西南角</div>
+                        <div class="option normal">(6%) C. 东北角</div>
+                        <div class="option normal">(6%) D. 东南角</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第12题】</div>
+                    <div class="question-text">七宝中学商业咖啡机的位置在哪里？</div>
+                    <div class="options">
+                        <div class="option wrong">(17%) A. 图文信息大楼✗</div>
+                        <div class="option correct">(78%) B. 3号楼✓</div>
+                        <div class="option normal">(5%) C. 4号楼</div>
+                        <div class="option normal">(0%) D. 文夫食堂3楼</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第13题】</div>
+                    <div class="question-text">以下哪个不是七宝中学文夫食堂3楼小炒售卖的菜品？</div>
+                    <div class="options">
+                        <div class="option normal">(6%) A. 干锅千页豆腐</div>
+                        <div class="option wrong">(22%) B. 小米椒爱上小公鸡✗</div>
+                        <div class="option normal">(0%) C. 酸辣土豆丝</div>
+                        <div class="option correct">(72%) D. 干煎柠檬鸡✓</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第14题】</div>
+                    <div class="question-text">2024年以前，七宝中学共有__片室外足球场，__片室外篮球场，__片室外网球场。</div>
+                    <div class="options">
+                        <div class="option normal">(17%) A. 4；4；2</div>
+                        <div class="option wrong">(22%) B. 3；5；2✗</div>
+                        <div class="option correct">(55%) C. 3；6；2✓</div>
+                        <div class="option normal">(6%) D. 4；5；3</div>
+                        <div class="option normal">(0%) E. 4；6；3</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第15题】</div>
+                    <div class="question-text">2023年10月12日，鱼缸成为了1班的一部分。它是因为什么实验而被购置的？</div>
+                    <div class="options">
+                        <div class="option normal">(5%) A. 桑基鱼塘模拟实验</div>
+                        <div class="option correct">(84%) B. 制作并观察生态瓶实验✓</div>
+                        <div class="option normal">(0%) C. 观察生态系统中的食物链实验</div>
+                        <div class="option normal">(11%) D. 观察生态系统中的能量流动和物质传输实验</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第16题】</div>
+                    <div class="question-text">黎挺第一次在课堂上称呼"大帅哥"时，指的是谁？</div>
+                    <div class="options">
+                        <div class="option correct">(89%) A. CJF✓</div>
+                        <div class="option normal">(0%) B. XBW</div>
+                        <div class="option normal">(11%) C. WQH</div>
+                        <div class="option normal">(0%) D. LFM</div>
+                        <div class="option normal">(0%) E. JZA</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第17题】</div>
+                    <div class="question-text">以下哪个不是我们班级在2023年狂欢节游园会摊位上售卖的商品？</div>
+                    <div class="options">
+                        <div class="option normal">(6%) A. 绿豆糕</div>
+                        <div class="option normal">(0%) B. 手绘扇子</div>
+                        <div class="option normal">(0%) C. 书法钥匙扣</div>
+                        <div class="option correct">(61%) D. 弹簧小人立牌✓</div>
+                        <div class="option wrong">(33%) E. 以上没有正确答案✗</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第18题】</div>
+                    <div class="question-text">2023年狂欢节，班级摊位的营业额（未减去成本）是多少？</div>
+                    <div class="options">
+                        <div class="option wrong">(28%) A. 2487.5✗</div>
+                        <div class="option normal">(17%) B. 3487.5</div>
+                        <div class="option correct">(33%) C. 4487.5✓</div>
+                        <div class="option normal">(22%) D. 5487.5</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第19题】</div>
+                    <div class="question-text">以下哪一个没有作为我们班历年艺术节的表演背景音乐？</div>
+                    <div class="options">
+                        <div class="option normal">(11%) A. 少年游（ft.Spylent）-INK</div>
+                        <div class="option normal">(0%) B. 赤伶-HITA</div>
+                        <div class="option normal">(11%) C. 大鱼-周深</div>
+                        <div class="option correct">(78%) D. 万疆-李玉刚✓</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第20题】</div>
+                    <div class="question-text">照片里的人物是贺怀栋老师和他的夫人，该场面出自哪一年的班主任节？</div>
+                    <div class="options">
+                        <div class="option normal">(11%) A. 2021年</div>
+                        <div class="option correct">(78%) B. 2022年✓</div>
+                        <div class="option normal">(11%) C. 2023年</div>
+                        <div class="option normal">(0%) D. 2024年</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第21题】</div>
+                    <div class="question-text">周勤丰老师的家乡是？</div>
+                    <div class="options">
+                        <div class="option normal">(6%) A. 浙江省宁波市慈溪市</div>
+                        <div class="option normal">(6%) B. 浙江省舟山市定海区</div>
+                        <div class="option correct">(82%) C. 浙江省嘉兴市海盐县✓</div>
+                        <div class="option normal">(6%) D. 浙江省湖州市南浔区</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第22题】</div>
+                    <div class="question-text">贺怀栋老师曾经在哪个高中教学？</div>
+                    <div class="options">
+                        <div class="option normal">(6%) A. 上海市第三女子中学</div>
+                        <div class="option correct">(56%) B. 西外外国语学校✓</div>
+                        <div class="option normal">(6%) C. 上海市文来中学高中部</div>
+                        <div class="option wrong">(15%) D. 上海市松江二中✗</div>
+                        <div class="option normal">(6%) E. 山东省泰安第一中学</div>
+                        <div class="option normal">(11%) F. 以上都不是</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第23题】</div>
+                    <div class="question-text">马霄燕老师经常会将JYC同学的思路比作什么？</div>
+                    <div class="options">
+                        <div class="option normal">(6%) A. 酱油</div>
+                        <div class="option normal">(11%) B. 浆糊</div>
+                        <div class="option correct">(83%) C. 毛线球✓</div>
+                        <div class="option normal">(0%) D. Casio电子辞典</div>
+                        <div class="option normal">(0%) E. 风油精</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第24题】</div>
+                    <div class="question-text">以下对于毛琦老师的描述错误的是？</div>
+                    <div class="options">
+                        <div class="option wrong">(22%) A. 毛琦老师非常热爱动物，经常在办公室里养宠物✗</div>
+                        <div class="option normal">(6%) B. 毛琦老师是世界名画《创死我们的预习》里的主人公</div>
+                        <div class="option normal">(0%) C. 毛琦老师从我们毕业后开始至今，在复旦大学附属中学徐汇分校任教</div>
+                        <div class="option correct">(72%) D. 毛琦老师精通科技类产品，所有的教辅购买资金收集都是在网上进行的✓</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第25题】</div>
+                    <div class="question-text">徐丽老师毕业于哪所高等学校？</div>
+                    <div class="options">
+                        <div class="option correct">(56%) A. 北京理工大学✓</div>
+                        <div class="option normal">(6%) B. 江南大学</div>
+                        <div class="option normal">(0%) C. 北京交通大学</div>
+                        <div class="option wrong">(22%) D. 北京师范大学✗</div>
+                        <div class="option normal">(0%) E. 北京大学</div>
+                        <div class="option normal">(16%) F. 以上都不是</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第26题】</div>
+                    <div class="question-text">以下哪个选项是田波老师的口头禅或特殊口音？</div>
+                    <div class="options">
+                        <div class="option normal">(6%) A. 来你告诉我</div>
+                        <div class="option normal">(0%) B. 第9题</div>
+                        <div class="option normal">(6%) C. 把他给我揍醒</div>
+                        <div class="option normal">(0%) D. 来课代表</div>
+                        <div class="option correct">(88%) E. 以上都是✓</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第27题】</div>
+                    <div class="question-text">以下哪个是赵振皓老师上课时提到过的品牌？</div>
+                    <div class="options">
+                        <div class="option normal">(6%) A. 大白兔奶糖</div>
+                        <div class="option correct">(66%) B. 全聚德烤鸭✓</div>
+                        <div class="option normal">(0%) C. 正广和汽水</div>
+                        <div class="option wrong">(28%) D. 泸溪河桃酥✗</div>
+                        <div class="option normal">(0%) E. 杏花楼月饼</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第28题】</div>
+                    <div class="question-text">冯慧老师指定的政治课代表是谁？</div>
+                    <div class="options">
+                        <div class="option normal">(11%) A. 本卷出卷人</div>
+                        <div class="option normal">(0%) B. 王HX</div>
+                        <div class="option normal">(6%) C. 张N</div>
+                        <div class="option correct">(83%) D. 季JS✓</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第29题】</div>
+                    <div class="question-text">沈凯老师曾经在哪一所高中担任校长？</div>
+                    <div class="options">
+                        <div class="option normal">(11%) A. 云南省鲁甸县第一中学</div>
+                        <div class="option correct">(83%) B. 云南省大关县第一中学✓</div>
+                        <div class="option normal">(0%) C. 云南省会泽县第一中学</div>
+                        <div class="option normal">(6%) D. 云南省盐津县第一中学</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第30题】</div>
+                    <div class="question-text">WHX同学曾在通用技术课上被欧维嘉老师"打过叉"，原因是什么？</div>
+                    <div class="options">
+                        <div class="option correct">(56%) A. 上课时看窗外✓</div>
+                        <div class="option wrong">(22%) B. 上课时写作业✗</div>
+                        <div class="option normal">(16%) C. 上课时玩电脑</div>
+                        <div class="option normal">(6%) D. 上课时喝水</div>
+                        <div class="option normal">(0%) E. 以上都不是</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第31题】</div>
+                    <div class="question-text">以下哪个没有教过我们班的艺术课？</div>
+                    <div class="options">
+                        <div class="option normal">(5%) A. 姚若曦</div>
+                        <div class="option normal">(0%) B. 诸可汲</div>
+                        <div class="option normal">(6%) C. 林梦石</div>
+                        <div class="option correct">(89%) D. 李新华✓</div>
+                        <div class="option normal">(0%) E. 艾朗华</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第32题】</div>
+                    <div class="question-text">高二上时期，施红蕾出的合格考练习卷里的选择题第5题答案是什么？</div>
+                    <div class="options">
+                        <div class="option correct">(72%) A. ✓</div>
+                        <div class="option normal">(6%) B. </div>
+                        <div class="option wrong">(16%) C. ✗</div>
+                        <div class="option normal">(6%) D. </div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第33题】</div>
+                    <div class="question-text">以下哪一个月份含有同学生日的数量最少？</div>
+                    <div class="options">
+                        <div class="option normal">(6%) A. 1月</div>
+                        <div class="option correct">(61%) B. 3月✓</div>
+                        <div class="option wrong">(33%) C. 7月✗</div>
+                        <div class="option normal">(0%) D. 9月</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第34题】</div>
+                    <div class="question-text">4号楼底部陈列的巨石的主要化学成分是什么？</div>
+                    <div class="options">
+                        <div class="option normal">(0%) A. CuSO₄·5H₂O</div>
+                        <div class="option normal">(0%) B. Na₂CO₃·10H₂O</div>
+                        <div class="option correct">(100%) C. CaSO₄·2H₂O✓</div>
+                        <div class="option normal">(0%) D. CaCl₂·2H₂O</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第35题】</div>
+                    <div class="question-text">七宝中学正门处的雕像上刻了哪一个字？</div>
+                    <div class="options">
+                        <div class="option normal">(0%) A. 学</div>
+                        <div class="option normal">(6%) B. 勤</div>
+                        <div class="option normal">(6%) C. 精</div>
+                        <div class="option normal">(0%) D. 勉</div>
+                        <div class="option correct">(88%) E. 翔✓</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第36题】</div>
+                    <div class="question-text">当你爬上了11级台阶时，恭喜你消耗了__kCal</div>
+                    <div class="options">
+                        <div class="option correct">(61%) A. 1.732✓</div>
+                        <div class="option normal">(16%) B. 1.964</div>
+                        <div class="option normal">(6%) C. 2.068</div>
+                        <div class="option normal">(17%) D. 3.463</div>
+                    </div>
+                </div>
+
+                <div class="question-box">
+                    <div class="question-num">【第37题】</div>
+                    <div class="question-text">七宝中学校园内，树人学堂北侧东西向的道路名称是？</div>
+                    <div class="options">
+                        <div class="option normal">(16%) A. 树人路</div>
+                        <div class="option normal">(6%) B. 学堂路</div>
+                        <div class="option correct">(62%) C. 学子路✓</div>
+                        <div class="option normal">(6%) D. 院士路</div>
+                        <div class="option normal">(0%) E. 希望路</div>
+                        <div class="option normal">(12%) F. 晨曦路</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 填空题 -->
+            <div id="fillblank" class="section">
+                <h2 class="section-title">二、填空题（每空1分，满分16分）</h2>
+
+                <div class="fill-blank-box">
+                    <div class="question-num">【第38题】QBA队员与替补</div>
+                    <div class="blank-text">2022年10月8日，QBA落下帷幕，我们夺得了本届QBA的第一名。本次上场及替补队员为及6位队员。</div>
+                    <div class="answer">
+                        <strong>✓ 正确答案：</strong><br>
+                        季家盛、雷瀚林、战泓旭、王乾豪、罗筱麓、高翔
+                    </div>
+                </div>
+
+                <div class="fill-blank-box">
+                    <div class="question-num">【第39题】运动会获奖成绩</div>
+                    <div class="blank-text">2022年10月27日，我们班以69分拿下运动会的年级第一名。除了QBA以外的获奖项目。</div>
+                    <div class="answer">
+                        <strong>✓ 正确答案：</strong><br>
+                        1. 男子100m：第一名 雷瀚林；第二名 戴毅轩<br>
+                        2. 男子4×100m接力：雷瀚林、戴毅轩、张溪樵、战泓旭<br>
+                        3. 男子跳远第二名：解博文
+                    </div>
+                </div>
+
+                <div class="fill-blank-box">
+                    <div class="question-num">【第40题】春秋游目的地</div>
+                    <div class="blank-text">我们一共进行过5次春秋游，请写出每一次对应的目的地。</div>
+                    <div class="answer">
+                        <strong>✓ 正确答案：</strong><br>
+                        1. 高一第一学期：海湾森林公园<br>
+                        2. 高二第一学期：吴淞炮台湾湿地公园<br>
+                        3. 高二第二学期：浦江郊野公园<br>
+                        4. 高三第一学期：共青森林公园<br>
+                        5. 高三第二学期：滨江森林公园<br>
+                        <em style="font-size: 0.9em;">※ 答题时只要出现关键词即可：海湾、炮台湾、浦江、共青、滨江</em>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 简答题 -->
+            <div id="shortans" class="section">
+                <h2 class="section-title">三、简答题（每题5分，共10分）</h2>
+
+                <div class="short-answer-box">
+                    <h4>【第41题】狂欢节作业的逻辑</h4>
+                    <p style="color: #666; line-height: 1.6;">
+                        狂欢节（周五）当天原则上不允许布置作业，但是贺怀栋老师却布置了作业，请问他的逻辑是什么？
+                    </p>
+                    <div class="answer">
+                        <strong>✓ 正确答案：</strong><br>
+                        周四布置周四的作业，周五布置周末的作业，周五本来就不布置作业。
+                    </div>
+                </div>
+
+                <div class="short-answer-box">
+                    <h4>【第42题】高中感想与反思</h4>
+                    <p style="color: #666; line-height: 1.6;">
+                        回望高中三年，有没有什么感想？（也可以随便谈谈对本次考试型回忆往昔的感受，或者有什么想对出题者说的话……可以开启任何你想开启的话题）
+                    </p>
+                    <div class="answer">
+                        <strong>✓ 答案说明：</strong><br>
+                        任意回答均为满分 ✓
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 QB_2401 | 版权所有</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">本网页为精简版解答 | 详细解答请参考PDF文档</p>
+        </div>
+    </div>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        function switchSection(sectionId) {
+            // 隐藏所有section
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 显示选中的section
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+
+            // 更新nav按钮状态
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+        }
+
+        // 返回顶部功能
+        const scrollBtn = document.querySelector('.scroll-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
